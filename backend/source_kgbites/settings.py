@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'source_kgbites.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kgbites_db',
+        'USER': 'kgbites_user',
+        'PASSWORD': 'vinu@3596',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

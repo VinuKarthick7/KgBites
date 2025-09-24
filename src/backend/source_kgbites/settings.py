@@ -31,9 +31,9 @@ environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 SECRET_KEY = 'django-insecure-^=x=t67bf$2eu645^&$!j6b^jbew(8&l2&g3&mc#&)7z3e3@9^'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG', default=True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', 'backend', 'kgbites_backend']
 
 
 # Application definition
@@ -92,11 +92,11 @@ WSGI_APPLICATION = 'source_kgbites.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'kgbites_db',
-        'USER': 'kgbites_user',
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env('DB_NAME', default='kgbites_db'),
+        'USER': env('DB_USER', default='kgbites_user'),
+        'PASSWORD': env('DB_PASSWORD', default='kgbites_password'),
+        'HOST': env('DB_HOST', default='localhost'),
+        'PORT': env('DB_PORT', default='5432'),
     }
 }
 
@@ -145,6 +145,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
+    "http://frontend:3000",
+    "http://kgbites_frontend:3000",
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True 

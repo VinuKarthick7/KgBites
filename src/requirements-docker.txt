@@ -1,0 +1,17 @@
+# Essential Django packages for Docker
+Django==5.2.6
+djangorestframework==3.15.2
+django-cors-headers==4.6.0
+django-environ==0.12.0
+
+# Database
+psycopg2-binary==2.9.10
+
+# Image handling (required for ImageField)
+Pillow==11.1.0
+
+# Optional: Add other essential packages as needed
+# Remove or comment out problematic packages like:
+# - dlib (has local file path)
+# - face-recognition dependencies
+# - TensorFlow/Keras (if not needed for core functionality)

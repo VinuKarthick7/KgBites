@@ -14,13 +14,14 @@ from pathlib import Path
 import os
 import environ
 
-# Initialise environment variables
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -144,5 +145,3 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
-
-CORS_ORIGIN_ALLOW_ALL = True

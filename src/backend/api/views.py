@@ -31,3 +31,21 @@ class LoginView(APIView):
             return Response({"message": "Login successful"}, status=status.HTTP_200_OK)
         else:
             return Response({"error": "Invalid Credentials"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class HelloView(APIView):
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        import datetime
+        return Response({
+            "message": "Hello from Django backend! 🚀",
+            "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "server": "Django 4.2.24",
+            "status": "Connected successfully!",
+            "endpoints": {
+                "signup": "/api/signup/",
+                "login": "/api/login/",
+                "hello": "/api/hello/"
+            }
+        }, status=status.HTTP_200_OK)
